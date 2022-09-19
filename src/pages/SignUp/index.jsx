@@ -8,7 +8,7 @@ import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
 
-export function SingUp() {
+export function SignUp() {
     const [ name, setName] = useState("")
     const [ email, setEmail] = useState("")
     const [ password, setPassword] = useState("")
