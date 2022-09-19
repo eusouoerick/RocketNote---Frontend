@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import { api } from "../services/api";
 
@@ -29,6 +29,21 @@ function AuthProvider({children}) {
         }
 
     }
+
+    useEffect( () => {
+        const user = localStorage.getItem("@rocketnotes:user")
+        const token = localStorage.getItem("@rocketnotes:token")
+
+        if(user && token) {
+            api.defaults.headers.authorization = `Beare ${token}`
+
+            setData({
+                token,
+                user: JSON.parse(user)
+            })
+        }
+
+    },[])
 
     return (
         <AuthContext.Provider value={{signIn, user: data.user}}>
